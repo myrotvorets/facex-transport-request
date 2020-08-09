@@ -1,0 +1,55 @@
+{
+  "name": "@myrotvorets/facex-transport-node-fetch",
+  "version": "1.0.0",
+  "description": "node-fetch transport for FaceX",
+  "main": "dist/lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --no-eslintrc -c .eslintrc.json .",
+    "lint:fix": "eslint --no-eslintrc -c .eslintrc.json --fix .",
+    "test": "jest"
+  },
+  "files": [
+    "dist/lib/*.d.ts",
+    "dist/lib/*.js",
+    "dist/lib/*.js.map"
+  ],
+  "typings": "dist/lib/index.d.ts",
+  "keywords": [],
+  "author": "Myrotvorets <support@myrotvorets.center> (https://myrotvorets.center/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@myrotvorets/facex-base": "^1.0.1",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14.0.27",
+    "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^26.2.2",
+    "merge": "^1.2.1",
+    "node-fetch": "^2.6.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
+  },
+  "peerDependencies": {
+    "@myrotvorets/facex-base": "^1.0.1",
+    "node-fetch": "^2.6.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myrotvorets/facex-transport-node-fetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/myrotvorets/facex-transport-node-fetch/issues"
+  },
+  "homepage": "https://github.com/myrotvorets/facex-transport-node-fetch#readme"
+}
