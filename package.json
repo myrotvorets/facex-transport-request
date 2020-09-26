@@ -19,8 +19,8 @@
   "author": "Myrotvorets <support@myrotvorets.center> (https://myrotvorets.center/)",
   "license": "MIT",
   "devDependencies": {
-    "@myrotvorets/eslint-config-myrotvorets-ts": "^1.0.1",
-    "@myrotvorets/facex-base": "^1.1.0",
+    "@myrotvorets/eslint-config-myrotvorets-ts": "^1.0.2",
+    "@myrotvorets/facex-base": "^1.1.1",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
     "@types/node-fetch": "^2.5.7",
