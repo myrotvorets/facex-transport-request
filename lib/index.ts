@@ -1,9 +1,10 @@
 import fetch, { Response } from 'node-fetch';
-import { IRemoteTransport, FaceXError, HttpError, NetworkError } from '@myrotvorets/facex-base';
+import { FaceXError, HttpError, IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
 
 export class TransportFetch implements IRemoteTransport {
+    // eslint-disable-next-line class-methods-use-this
     public async post(url: URL, body: string, headers: Record<string, string>): Promise<string> {
-        const r = await this._fetch(url, body, headers);
+        const r = await TransportFetch._fetch(url, body, headers);
 
         if (!r.ok) {
             const err = new HttpError(r);
@@ -16,16 +17,16 @@ export class TransportFetch implements IRemoteTransport {
             throw err;
         }
 
-        return this._getText(r);
+        return TransportFetch._getText(r);
     }
 
-    private _fetch(url: URL, body: string, headers: Record<string, string>): Promise<Response> {
+    private static _fetch(url: URL, body: string, headers: Record<string, string>): Promise<Response> {
         return fetch(url, { method: 'POST', body, headers }).catch((e: Error) =>
             Promise.reject(new NetworkError(e.message)),
         );
     }
 
-    private _getText(r: Response): Promise<string> {
+    private static _getText(r: Response): Promise<string> {
         return r.text().catch((e: Error) => Promise.reject(new FaceXError(e.message)));
     }
 }

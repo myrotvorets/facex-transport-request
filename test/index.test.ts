@@ -1,6 +1,6 @@
 import * as fetch from 'node-fetch';
+import { FaceXError, HttpError, NetworkError } from '@myrotvorets/facex-base';
 import { TransportFetch } from '../lib';
-import { NetworkError, HttpError, FaceXError } from '@myrotvorets/facex-base';
 
 jest.mock('node-fetch');
 
