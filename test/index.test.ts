@@ -4,10 +4,8 @@ import { TransportFetch } from '../lib';
 
 jest.mock('node-fetch');
 
-const {
-    FetchError,
-    Response,
-}: { FetchError: typeof fetch.FetchError; Response: typeof fetch.Response } = jest.requireActual('node-fetch');
+const { FetchError, Response }: { FetchError: typeof fetch.FetchError; Response: typeof fetch.Response } =
+    jest.requireActual('node-fetch');
 
 const mockedFetch = fetch as jest.Mocked<typeof fetch>;
 
