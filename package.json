@@ -1,7 +1,7 @@
 {
-  "name": "@myrotvorets/facex-transport-node-fetch",
-  "version": "1.1.4",
-  "description": "node-fetch transport for FaceX",
+  "name": "@myrotvorets/facex-transport-fetch-h2",
+  "version": "1.0.0",
+  "description": "fetch-h2 transport for FaceX",
   "main": "dist/lib/index.js",
   "scripts": {
     "build": "tsc",
@@ -25,26 +25,28 @@
     "@myrotvorets/facex-base": "^1.1.3",
     "@types/jest": "^27.0.1",
     "@types/node": ">= 12",
-    "@types/node-fetch": "^2.5.8",
     "eslint-formatter-gha": "^1.2.0",
+    "fetch-h2": "^3.0.1",
     "jest": "^27.0.1",
     "jest-github-actions-reporter": "^1.0.3",
     "jest-sonar-reporter": "^2.0.0",
     "merge": "^2.1.1",
-    "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.1",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
     "@myrotvorets/facex-base": "^1.0.1",
-    "node-fetch": "^2.6.0"
+    "fetch-h2": "^3.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/myrotvorets/facex-transport-node-fetch.git"
+    "url": "git+https://github.com/myrotvorets/facex-transport-fetch-h2.git"
   },
   "bugs": {
-    "url": "https://github.com/myrotvorets/facex-transport-node-fetch/issues"
+    "url": "https://github.com/myrotvorets/facex-transport-fetch-h2/issues"
   },
-  "homepage": "https://github.com/myrotvorets/facex-transport-node-fetch#readme"
+  "homepage": "https://github.com/myrotvorets/facex-transport-fetch-h2#readme",
+  "directories": {
+    "test": "test"
+  }
 }
