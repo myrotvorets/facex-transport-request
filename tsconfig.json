@@ -12,9 +12,7 @@
         "noFallthroughCasesInSwitch": true,
         "esModuleInterop": true,
         "resolveJsonModule": false,
-        "typeRoots": [
-            "./node_modules/@types/"
-        ]
+        "skipLibCheck": true
     },
     "compileOnSave": true
 }

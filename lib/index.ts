@@ -1,4 +1,4 @@
-import { Response, fetch } from 'fetch-h2';
+import { Response, fetch } from '@adobe/helix-fetch';
 import { FaceXError, HttpError, IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
 
 export class TransportFetch implements IRemoteTransport {
@@ -21,11 +21,9 @@ export class TransportFetch implements IRemoteTransport {
     }
 
     private static _fetch(url: URL, body: string, headers: Record<string, string>): Promise<Response> {
-        return fetch(url.toString(), { method: 'POST', allowForbiddenHeaders: true, body, headers }).catch(
-            (e: Error) => {
-                throw new NetworkError(e.message);
-            },
-        );
+        return fetch(url.toString(), { method: 'POST', body, headers }).catch((e: Error) => {
+            throw new NetworkError(e.message);
+        });
     }
 
     private static _getText(r: Response): Promise<string> {
