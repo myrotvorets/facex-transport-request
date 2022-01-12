@@ -1,34 +1,49 @@
-import { Response, fetch } from '@adobe/helix-fetch';
-import { FaceXError, HttpError, IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
+import { IncomingMessage, request as httpRequest } from 'http';
+import { request as httpsRequest } from 'https';
+import { HttpError, IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
 
 export class TransportFetch implements IRemoteTransport {
     // eslint-disable-next-line class-methods-use-this
-    public async post(url: URL, body: string, headers: Record<string, string>): Promise<string> {
-        const r = await TransportFetch._fetch(url, body, headers);
+    public post(url: URL, body: string, headers: Record<string, string>): Promise<string> {
+        return new Promise<string>((resolve, reject) => {
+            let responseBody = '';
+            const request = url.protocol === 'https:' ? httpsRequest : httpRequest;
+            headers['Content-Length'] = `${body.length}`;
+            const req = request(
+                url,
+                {
+                    method: 'POST',
+                    headers,
+                },
+                (response: IncomingMessage) => {
+                    response.on('data', (chunk) => {
+                        responseBody += chunk;
+                    });
 
-        if (!r.ok) {
-            const err = new HttpError(r);
-            try {
-                err.body = await r.text();
-            } catch (e) {
-                err.body = '';
-            }
+                    response.once('end', () => {
+                        if (response.statusCode !== 200) {
+                            const error = new HttpError({
+                                status: response.statusCode || 0,
+                                statusText: response.statusMessage || '',
+                            });
 
-            throw err;
-        }
+                            error.body = responseBody;
+                            reject(error);
+                        } else {
+                            resolve(responseBody);
+                        }
+                    });
+                },
+            );
 
-        return TransportFetch._getText(r);
-    }
-
-    private static _fetch(url: URL, body: string, headers: Record<string, string>): Promise<Response> {
-        return fetch(url.toString(), { method: 'POST', body, headers }).catch((e: Error) => {
-            throw new NetworkError(e.message);
-        });
-    }
-
-    private static _getText(r: Response): Promise<string> {
-        return r.text().catch((e: Error) => {
-            throw new FaceXError(e.message);
+            req.once('error', (error) => {
+                const e = new NetworkError(error.message);
+                e.stack = error.stack;
+                e.body = responseBody;
+                reject(e);
+            });
+            req.write(body);
+            req.end();
         });
     }
 }

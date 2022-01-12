@@ -1,7 +1,7 @@
 {
-  "name": "@myrotvorets/facex-transport-fetch-h2",
-  "version": "2.0.2",
-  "description": "fetch-h2/helix-fetch transport for FaceX",
+  "name": "@myrotvorets/facex-transport-request",
+  "version": "1.0.0",
+  "description": "Native Node request transport for FaceX",
   "main": "dist/lib/index.js",
   "scripts": {
     "build": "tsc",
@@ -20,34 +20,32 @@
   "keywords": [],
   "author": "Myrotvorets <support@myrotvorets.center> (https://myrotvorets.center/)",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "@myrotvorets/eslint-config-myrotvorets-ts": "^2.2.5",
-    "@myrotvorets/facex-base": "^1.1.3",
+    "@myrotvorets/facex-base": "^1.1.8",
     "@types/jest": "^27.0.1",
     "@types/node": ">= 12",
     "eslint-formatter-gha": "^1.2.0",
     "jest": "^27.0.1",
     "jest-github-actions-reporter": "^1.0.3",
     "jest-sonar-reporter": "^2.0.0",
-    "merge": "^2.1.1",
+    "nock": "^13.2.2",
     "ts-jest": "^27.0.1",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
-    "@myrotvorets/facex-base": "^1.0.1"
+    "@myrotvorets/facex-base": "^1.1.8"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/myrotvorets/facex-transport-fetch-h2.git"
-  },
-  "bugs": {
-    "url": "https://github.com/myrotvorets/facex-transport-fetch-h2/issues"
-  },
-  "homepage": "https://github.com/myrotvorets/facex-transport-fetch-h2#readme",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "@adobe/helix-fetch": "^3.0.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myrotvorets/facex-transport-request.git"
+  },
+  "bugs": {
+    "url": "https://github.com/myrotvorets/facex-transport-request/issues"
+  },
+  "homepage": "https://github.com/myrotvorets/facex-transport-request#readme"
 }

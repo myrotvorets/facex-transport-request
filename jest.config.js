@@ -1,7 +1,6 @@
-const merge = require('merge');
-const ts_preset = require('ts-jest/jest-preset');
-
-module.exports = merge.recursive(ts_preset, {
+/** @type {import('ts-jest').InitialOptionsTsJest} */
+module.exports = {
+    preset: 'ts-jest',
     collectCoverage: process.env.COLLECT_COVERAGE !== '0',
     collectCoverageFrom: [
         'lib/**/*.ts',
@@ -18,4 +17,4 @@ module.exports = merge.recursive(ts_preset, {
         process.env.GITHUB_ACTIONS === 'true' ? 'jest-github-actions-reporter' : null,
     ].filter(Boolean),
     testLocationInResults: true
-});
+};
