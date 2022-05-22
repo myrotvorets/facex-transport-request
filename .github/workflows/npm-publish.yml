@@ -11,6 +11,9 @@ on:
         description: Publish to GPR?
         required: true
 
+permissions:
+  contents: read
+
 jobs:
   prepare:
     name: Prepare the source code
@@ -61,7 +64,7 @@ jobs:
             registry_url: https://npm.pkg.github.com/
     steps:
       - name: Set commit status to PENDING
-        uses: myrotvorets/set-commit-status-action@5b39333f62641d4fe9c0967572f738a4aea8a15b # renovate: tag=1.1.4
+        uses: myrotvorets/set-commit-status-action@5b39333f62641d4fe9c0967572f738a4aea8a15b # tag=1.1.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           status: pending
