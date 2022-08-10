@@ -18,6 +18,9 @@ jobs:
   prepare:
     name: Prepare the source code
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     if: github.event_name == 'release' || github.event.inputs.npm == 'yes' || github.event.inputs.gpr == 'yes'
     steps:
       - name: Checkout source

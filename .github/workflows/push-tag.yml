@@ -3,7 +3,7 @@ name: Pre-release Testing
 on:
   push:
     tags:
-      - "*"
+      - "**"
 
 permissions:
   contents: read
@@ -12,29 +12,12 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
-      - name: Check out the code
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
-
-      - name: Set up Node.js environment
-        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
-        with:
-          node-version: lts/*
-          registry-url: https://npm.pkg.github.com
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Run postinstall scripts
-        run: npm rebuild && npm run prepare --if-present
-
-      - name: Run tests
-        run: npm test
-        env:
-          COLLECT_COVERAGE: "0"
+      - name: Build and test
+        uses: myrotvorets/composite-actions/build-test-nodejs@master
 
   release:
     name: Prepare the release
@@ -50,6 +33,5 @@ jobs:
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5 # tag=v0.1.14
         with:
           generate_release_notes: true
-          tag_name: ${{ needs.build.outputs.reference }}
         env:
           GITHUB_TOKEN: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
