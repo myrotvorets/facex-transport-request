@@ -2,9 +2,18 @@
   "name": "@myrotvorets/facex-transport-request",
   "version": "3.2.0",
   "description": "Native Node request transport for FaceX",
-  "main": "dist/lib/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/lib/index.d.ts",
+      "require": "./dist/cjs/lib/index.js",
+      "import": "./dist/esm/lib/index.js",
+      "default": "./dist/esm/lib/index.js"
+    }
+  },
+  "main": "./dist/cjs/lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -b ./tsconfig.esm.json ./tsconfig.cjs.json ./tsconfig.types.json; echo '{ \"type\": \"module\" }' > ./dist/esm/lib/package.json; echo '{ \"type\": \"commonjs\" }' > ./dist/cjs/lib/package.json",
     "lint": "eslint -f gha .",
     "lint:fix": "eslint --fix .",
     "pretest": "npm run lint",
@@ -12,11 +21,14 @@
     "prepare": "npm run build"
   },
   "files": [
-    "dist/lib/*.d.ts",
-    "dist/lib/*.js",
-    "dist/lib/*.js.map"
+    "dist/cjs/lib/*.js",
+    "dist/cjs/lib/*.js.map",
+    "dist/cjs/lib/package.json",
+    "dist/esm/lib/*.js",
+    "dist/esm/lib/*.js.map",
+    "dist/esm/lib/package.json",
+    "dist/types/lib/*.d.ts"
   ],
-  "typings": "dist/lib/index.d.ts",
   "keywords": [],
   "author": "Myrotvorets <support@myrotvorets.center> (https://myrotvorets.center/)",
   "license": "MIT",

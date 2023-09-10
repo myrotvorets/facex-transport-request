@@ -1,6 +1,17 @@
-/** @type {import('ts-jest').InitialOptionsTsJest} */
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-    preset: 'ts-jest',
+    preset: 'ts-jest/presets/default-esm',
+    moduleNameMapper: {
+        '^(\\.{1,2}/.*)\\.js$': '$1',
+    },
+    transform: {
+        '^.+\\.ts$': [
+            'ts-jest',
+            {
+                useESM: true,
+            },
+        ],
+    },
     collectCoverage: process.env.COLLECT_COVERAGE !== '0',
     collectCoverageFrom: [
         'lib/**/*.ts',

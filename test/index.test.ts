@@ -1,6 +1,6 @@
 import nock, { disableNetConnect, enableNetConnect } from 'nock';
 import { HttpError, NetworkError } from '@myrotvorets/facex-base';
-import { TransportRequest } from '../lib';
+import { TransportRequest } from '../lib/index.js';
 
 describe('TransportRequest', () => {
     const transport = new TransportRequest();

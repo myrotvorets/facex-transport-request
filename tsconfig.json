@@ -1,18 +1,1 @@
-{
-    "compilerOptions": {
-        "target": "es2022",
-        "module": "CommonJS",
-        "outDir": "./dist",
-        "sourceMap": true,
-        "rootDirs": ["./lib", "./test"],
-        "declaration": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": false,
-        "noFallthroughCasesInSwitch": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": false,
-        "skipLibCheck": true
-    },
-    "compileOnSave": true
-}
+tsconfig.esm.json
