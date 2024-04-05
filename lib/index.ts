@@ -25,7 +25,7 @@ export class TransportRequest implements IRemoteTransport {
                 },
                 (response: IncomingMessage) => {
                     response.on('data', (chunk) => {
-                        responseBody += chunk;
+                        responseBody += chunk as string;
                     });
 
                     response.once('end', () => {
