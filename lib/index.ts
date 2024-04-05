@@ -1,6 +1,6 @@
-import { IncomingMessage, request as httpRequest } from 'http';
+import { type IncomingMessage, request as httpRequest } from 'http';
 import { request as httpsRequest } from 'https';
-import { HttpError, IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
+import { HttpError, type IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
 
 export class TransportRequest implements IRemoteTransport {
     // eslint-disable-next-line class-methods-use-this
