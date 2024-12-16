@@ -1,9 +1,8 @@
-import { type IncomingMessage, request as httpRequest } from 'http';
-import { request as httpsRequest } from 'https';
+import { type IncomingMessage, request as httpRequest } from 'node:http';
+import { request as httpsRequest } from 'node:https';
 import { HttpError, type IRemoteTransport, NetworkError } from '@myrotvorets/facex-base';
 
 export class TransportRequest implements IRemoteTransport {
-    // eslint-disable-next-line class-methods-use-this
     public post(url: URL, body: string, headers: Record<string, string>, timeout: number): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             let responseBody = '';
