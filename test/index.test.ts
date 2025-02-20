@@ -22,7 +22,7 @@ describe('TransportRequest', () => {
         nock('http://example.com').post('/').reply(404, 'Ignored');
         return expect(transport.post(new URL('http://example.com/'), '', {}, 15000)).rejects.toMatchObject({
             code: 404,
-            statusText: '',
+            statusText: 'Not Found',
             body: 'Ignored',
         });
     });
@@ -33,9 +33,8 @@ describe('TransportRequest', () => {
         return expect(transport.post(new URL('https://example.com/'), '', {}, 15000)).resolves.toEqual(body);
     });
 
-    // see https://github.com/nock/nock/issues/2478
-    it.skip('should handle timeouts', () => {
-        nock('https://example.com').post('/').delayBody(1000).reply(200, 'XXX');
+    it('should handle timeouts', () => {
+        nock('https://example.com').post('/').delay(1000).reply(200, 'XXX');
         return expect(transport.post(new URL('https://example.com/'), '', {}, 50)).rejects.toThrow(NetworkError);
     });
 });
